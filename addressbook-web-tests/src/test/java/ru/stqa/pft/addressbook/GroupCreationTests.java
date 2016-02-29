@@ -17,6 +17,25 @@ public class GroupCreationTests {
         wd = new FirefoxDriver();
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         wd.get("http://addressbook/");
+        login();
+    }
+
+    @Test
+    public void testGroupCreation() {
+        goToGroupsPage();
+        initGroupCreation();
+        fillGroupForm();
+        submitGroupCreation();
+        returnToGroupsPage();
+        logout();
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        wd.quit();
+    }
+
+    private void login() {
         wd.findElement(By.id("LoginForm")).click();
         wd.findElement(By.name("user")).click();
         wd.findElement(By.name("user")).clear();
@@ -28,10 +47,15 @@ public class GroupCreationTests {
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
     }
 
-    @Test
-    public void testGroupCreation() {
+    private void goToGroupsPage() {
         wd.findElement(By.linkText("groups")).click();
+    }
+
+    private void initGroupCreation() {
         wd.findElement(By.name("new")).click();
+    }
+
+    private void fillGroupForm() {
         wd.findElement(By.name("group_name")).click();
         wd.findElement(By.name("group_name")).clear();
         wd.findElement(By.name("group_name")).sendKeys("my group");
@@ -41,13 +65,17 @@ public class GroupCreationTests {
         wd.findElement(By.name("group_footer")).click();
         wd.findElement(By.name("group_footer")).clear();
         wd.findElement(By.name("group_footer")).sendKeys("group footer");
-        wd.findElement(By.name("submit")).click();
-        wd.findElement(By.linkText("group page")).click();
-        wd.findElement(By.linkText("Logout")).click();
     }
 
-    @AfterMethod
-    public void tearDown() {
-        wd.quit();
+    private void submitGroupCreation() {
+        wd.findElement(By.name("submit")).click();
+    }
+
+    private void returnToGroupsPage() {
+        wd.findElement(By.linkText("group page")).click();
+    }
+
+    private void logout() {
+        wd.findElement(By.linkText("Logout")).click();
     }
 }
