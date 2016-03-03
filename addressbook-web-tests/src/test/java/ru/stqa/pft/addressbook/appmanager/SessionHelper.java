@@ -3,22 +3,23 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class SessionHelper {
-    private FirefoxDriver browser;
+public class SessionHelper extends HelperBase {
 
     public SessionHelper(FirefoxDriver browser) {
-        this.browser = browser;
+        super(browser);
+    }
+
+    public void openHomePage() {
+        browser.get("http://addressbook/");
     }
 
     public void login(String username, String password) {
-        browser.findElement(By.id("LoginForm")).click();
-        browser.findElement(By.name("user")).click();
-        browser.findElement(By.name("user")).clear();
-        browser.findElement(By.name("user")).sendKeys(username);
-        browser.findElement(By.id("LoginForm")).click();
-        browser.findElement(By.name("pass")).click();
-        browser.findElement(By.name("pass")).clear();
-        browser.findElement(By.name("pass")).sendKeys(password);
-        browser.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
+        type(By.name("user"), username);
+        type(By.name("pass"), password);
+        click(By.xpath("//form[@id='LoginForm']/input[3]"));
+    }
+
+    public void logout() {
+        click(By.linkText("Logout"));
     }
 }

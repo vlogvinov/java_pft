@@ -15,23 +15,15 @@ public class ApplicationManager {
     public void init() {
         browser = new FirefoxDriver();
         browser.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        openHomePage();
         groupHelper = new GroupHelper(browser);
         navigationHelper = new NavigationHelper(browser);
         sessionHelper = new SessionHelper(browser);
+        sessionHelper.openHomePage();
         sessionHelper.login("admin", "secret");
     }
 
     public void stop() {
         browser.quit();
-    }
-
-    public void openHomePage() {
-        browser.get("http://addressbook/");
-    }
-
-    public void logout() {
-        browser.findElement(By.linkText("Logout")).click();
     }
 
     public GroupHelper getGroupHelper() {
@@ -40,5 +32,9 @@ public class ApplicationManager {
 
     public NavigationHelper getNavigationHelper() {
         return navigationHelper;
+    }
+
+    public SessionHelper getSessionHelper(){
+        return sessionHelper;
     }
 }
