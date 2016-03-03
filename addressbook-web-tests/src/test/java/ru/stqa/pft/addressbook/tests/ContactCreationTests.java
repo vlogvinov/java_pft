@@ -12,7 +12,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactCreationTests {
     FirefoxDriver browser;
-    
+
     @BeforeMethod
     public void setUp() throws Exception {
         browser = new FirefoxDriver();
