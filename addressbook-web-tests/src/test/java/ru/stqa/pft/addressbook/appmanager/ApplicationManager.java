@@ -1,30 +1,47 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.BrowserType;
+import sun.plugin.dom.exception.BrowserNotSupportedException;
 
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-    FirefoxDriver browser;
+    private String browser;
+    WebDriver driver;
 
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
     private SessionHelper sessionHelper;
     private ContactHelper contactHelper;
 
+    public ApplicationManager(String browser) {
+        this.browser = browser;
+    }
+
     public void init() {
-        browser = new FirefoxDriver();
-        browser.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        groupHelper = new GroupHelper(browser);
-        navigationHelper = new NavigationHelper(browser);
-        sessionHelper = new SessionHelper(browser);
-        contactHelper = new ContactHelper(browser);
+        if (browser == BrowserType.FIREFOX) {
+            driver = new FirefoxDriver();
+        } else if (browser == BrowserType.CHROME) {
+            driver = new ChromeDriver();
+        } else if (browser == BrowserType.IE) {
+            driver = new InternetExplorerDriver();
+        }
+
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        groupHelper = new GroupHelper(driver);
+        navigationHelper = new NavigationHelper(driver);
+        sessionHelper = new SessionHelper(driver);
+        contactHelper = new ContactHelper(driver);
         sessionHelper.openHomePage();
         sessionHelper.login("admin", "secret");
     }
 
     public void stop() {
-        browser.quit();
+        driver.quit();
     }
 
     public GroupHelper getGroupHelper() {

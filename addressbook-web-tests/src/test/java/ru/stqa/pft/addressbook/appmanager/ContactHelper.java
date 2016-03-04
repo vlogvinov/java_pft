@@ -1,13 +1,14 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
-    public ContactHelper(FirefoxDriver browser) {
+    public ContactHelper( WebDriver browser) {
         super(browser);
     }
 
@@ -36,13 +37,13 @@ public class ContactHelper extends HelperBase {
 
 /*
         // Birth date
-        selectValueFromSelector(browser.findElementByName("bday"), "5");
-        selectValueFromSelector(browser.findElementByName("bmonth"), "July");
+        selectValueFromSelector(driver.findElementByName("bday"), "5");
+        selectValueFromSelector(driver.findElementByName("bmonth"), "July");
         type(By.name("byear"), contact.getBirthYear());
 
         // Anniversary date
-        selectValueFromSelector(browser.findElementByName("aday"), "6");
-        selectValueFromSelector(browser.findElementByName("amonth"), "February");
+        selectValueFromSelector(driver.findElementByName("aday"), "6");
+        selectValueFromSelector(driver.findElementByName("amonth"), "February");
         type(By.name("ayear"), contact.getAnniverYear());*/
 
         /*  group  selector */
