@@ -1,7 +1,9 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
@@ -33,9 +35,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("homepage"), contact.getHomePage());
 
         // Birth date
-        if (!browser.findElement(By.xpath("//div[@id='content']/form/select[1]//option[" + contact.getBirthDay() + "]")).isSelected()) {
-            browser.findElement(By.xpath("//div[@id='content']/form/select[1]//option[" + contact.getBirthDay() + "]")).click();
-        }
+       selectValueFromSelector(browser.findElementByName("bday"), "5");
         if (!browser.findElement(By.xpath("//div[@id='content']/form/select[2]//option[" + contact.getBirthMonth() + "]")).isSelected()) {
             browser.findElement(By.xpath("//div[@id='content']/form/select[2]//option[" + contact.getBirthMonth() + "]")).click();
         }
@@ -56,6 +56,11 @@ public class ContactHelper extends HelperBase {
         type(By.name("phone2"), contact.getSecondHomePhoneNumber());
         type(By.name("notes"), contact.getNotes());
 
+    }
+
+    private void selectValueFromSelector(WebElement selectLocator, String value) {
+        Select select = new Select(selectLocator);
+        select.selectByValue(value);
     }
 
     public void submitContactCreation() {
