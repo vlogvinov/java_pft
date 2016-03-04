@@ -9,18 +9,21 @@ import org.openqa.selenium.support.ui.Select;
 public class HelperBase {
     protected WebDriver browser;
 
-    public HelperBase( WebDriver browser) {
+    public HelperBase(WebDriver browser) {
         this.browser = browser;
     }
 
     protected void type(By locator, String text) {
-        click(locator);
-        clear(locator);
-        send(locator, text);
+        if (text != null) {
+            click(locator);
+            clear(locator);
+            send(locator, text);
+        }
     }
 
     private void send(By locator, String text) {
-        browser.findElement(locator).sendKeys(text);
+        if (text != null)
+            browser.findElement(locator).sendKeys(text);
     }
 
     private void clear(By locator) {
