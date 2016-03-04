@@ -34,20 +34,15 @@ public class ContactHelper extends HelperBase {
         type(By.name("email3"), contact.getThirdEmail());
         type(By.name("homepage"), contact.getHomePage());
 
+
         // Birth date
-       selectValueFromSelector(browser.findElementByName("bday"), "5");
-        if (!browser.findElement(By.xpath("//div[@id='content']/form/select[2]//option[" + contact.getBirthMonth() + "]")).isSelected()) {
-            browser.findElement(By.xpath("//div[@id='content']/form/select[2]//option[" + contact.getBirthMonth() + "]")).click();
-        }
+        selectValueFromSelector(browser.findElementByName("bday"), "5");
+        selectValueFromSelector(browser.findElementByName("bmonth"), "July");
         type(By.name("byear"), contact.getBirthYear());
 
         // Anniversary date
-        if (!browser.findElement(By.xpath("//div[@id='content']/form/select[3]//option[" + contact.getAnniverDay() + "]")).isSelected()) {
-            browser.findElement(By.xpath("//div[@id='content']/form/select[3]//option[" + contact.getAnniverDay() + "]")).click();
-        }
-        if (!browser.findElement(By.xpath("//div[@id='content']/form/select[4]//option[" + contact.getAnniverMonth() + "]")).isSelected()) {
-            browser.findElement(By.xpath("//div[@id='content']/form/select[4]//option[" + contact.getAnniverMonth() + "]")).click();
-        }
+        selectValueFromSelector(browser.findElementByName("aday"), "6");
+        selectValueFromSelector(browser.findElementByName("amonth"), "February");
         type(By.name("ayear"), contact.getAnniverYear());
 
         /*  group  selector */
@@ -56,11 +51,6 @@ public class ContactHelper extends HelperBase {
         type(By.name("phone2"), contact.getSecondHomePhoneNumber());
         type(By.name("notes"), contact.getNotes());
 
-    }
-
-    private void selectValueFromSelector(WebElement selectLocator, String value) {
-        Select select = new Select(selectLocator);
-        select.selectByValue(value);
     }
 
     public void submitContactCreation() {
