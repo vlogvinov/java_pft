@@ -18,7 +18,7 @@ public class ContactHelper extends HelperBase {
     public void fillContactForm(ContactData contact) {
         type(By.name("firstname"), contact.getFirstName());
         type(By.name("middlename"), contact.getMiddleName());
-        type(By.name("middlename"), contact.getLastName());
+        type(By.name("lastname"), contact.getLastName());
         type(By.name("nickname"), contact.getNickName());
 
         /* photo field */
@@ -34,7 +34,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("email3"), contact.getThirdEmail());
         type(By.name("homepage"), contact.getHomePage());
 
-
+/*
         // Birth date
         selectValueFromSelector(browser.findElementByName("bday"), "5");
         selectValueFromSelector(browser.findElementByName("bmonth"), "July");
@@ -43,7 +43,7 @@ public class ContactHelper extends HelperBase {
         // Anniversary date
         selectValueFromSelector(browser.findElementByName("aday"), "6");
         selectValueFromSelector(browser.findElementByName("amonth"), "February");
-        type(By.name("ayear"), contact.getAnniverYear());
+        type(By.name("ayear"), contact.getAnniverYear());*/
 
         /*  group  selector */
 
@@ -59,5 +59,21 @@ public class ContactHelper extends HelperBase {
 
     public void returnToHomePage() {
         click(By.linkText("home page"));
+    }
+
+    public void selectContact() {
+        click(By.xpath("(//input[@type='checkbox'])[1]"));
+    }
+
+    public void editSelectedContact() {
+        click(By.xpath("//tr[2]/td[8]//img"));
+    }
+
+    public void submitContactModification() {
+        click(By.xpath("//input[@value='Update'][2]"));
+    }
+
+    public void removeContact() {
+        click(By.xpath("//input[@value='Delete']"));
     }
 }

@@ -1,30 +1,34 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-    private final String firstName;
-    private final String middleName;
-    private final String lastName;
-    private final String nickName;
-    private final String title;
-    private final String company;
-    private final String firstAddress;
-    private final String homePhoneNumber;
-    private final String mobilePhoneNumber;
-    private final String workPhoneNumber;
-    private final String fax;
-    private final String mainEmail;
-    private final String secondEmail;
-    private final String thirdEmail;
-    private final String homePage;
-    private final String birthDay;
-    private final String birthMonth;
-    private final String birthYear;
-    private final String anniverDay;
-    private final String anniverMonth;
-    private final String anniverYear;
-    private final String secondAddress;
-    private final String secondHomePhoneNumber;
-    private final String notes;
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private String nickName;
+    private String title;
+    private String company;
+    private String firstAddress;
+    private String homePhoneNumber;
+    private String mobilePhoneNumber;
+    private String workPhoneNumber;
+    private String fax;
+    private String mainEmail;
+    private String secondEmail;
+    private String thirdEmail;
+    private String homePage;
+    private String birthDay;
+    private String birthMonth;
+    private String birthYear;
+    private String anniverDay;
+    private String anniverMonth;
+    private String anniverYear;
+    private String secondAddress;
+    private String secondHomePhoneNumber;
+    private String notes;
+
+    public ContactData(){
+
+    }
 
     public ContactData(String firstName, String middleName, String lastName, String nickName, String title, String company, String firstAddress, String homePhoneNumber, String mobilePhoneNumber, String workPhoneNumber, String fax, String mainEmail, String secondEmail, String thirdEmail, String homePage, String birthDay, String birthMonth, String birthYear, String anniverDay, String anniverMonth, String anniverYear, String secondAddress, String secondHomePhoneNumber, String notes) {
         this.firstName = firstName;
@@ -52,6 +56,9 @@ public class ContactData {
         this.secondHomePhoneNumber = secondHomePhoneNumber;
         this.notes = notes;
     }
+
+
+    /*                      GETTERS                                 */
 
     public String getFirstName() {
         return firstName;
@@ -147,5 +154,105 @@ public class ContactData {
 
     public String getNotes() {
         return notes;
+    }
+
+
+
+    /*          SETTERS                  */
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public void setFirstAddress(String firstAddress) {
+        this.firstAddress = firstAddress;
+    }
+
+    public void setHomePhoneNumber(String homePhoneNumber) {
+        this.homePhoneNumber = homePhoneNumber;
+    }
+
+    public void setMobilePhoneNumber(String mobilePhoneNumber) {
+        this.mobilePhoneNumber = mobilePhoneNumber;
+    }
+
+    public void setWorkPhoneNumber(String workPhoneNumber) {
+        this.workPhoneNumber = workPhoneNumber;
+    }
+
+    public void setFax(String fax) {
+        this.fax = fax;
+    }
+
+    public void setMainEmail(String mainEmail) {
+        this.mainEmail = mainEmail;
+    }
+
+    public void setSecondEmail(String secondEmail) {
+        this.secondEmail = secondEmail;
+    }
+
+    public void setThirdEmail(String thirdEmail) {
+        this.thirdEmail = thirdEmail;
+    }
+
+    public void setHomePage(String homePage) {
+        this.homePage = homePage;
+    }
+
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    public void setBirthMonth(String birthMonth) {
+        this.birthMonth = birthMonth;
+    }
+
+    public void setBirthYear(String birthYear) {
+        this.birthYear = birthYear;
+    }
+
+    public void setAnniverDay(String anniverDay) {
+        this.anniverDay = anniverDay;
+    }
+
+    public void setAnniverMonth(String anniverMonth) {
+        this.anniverMonth = anniverMonth;
+    }
+
+    public void setAnniverYear(String anniverYear) {
+        this.anniverYear = anniverYear;
+    }
+
+    public void setSecondAddress(String secondAddress) {
+        this.secondAddress = secondAddress;
+    }
+
+    public void setSecondHomePhoneNumber(String secondHomePhoneNumber) {
+        this.secondHomePhoneNumber = secondHomePhoneNumber;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }

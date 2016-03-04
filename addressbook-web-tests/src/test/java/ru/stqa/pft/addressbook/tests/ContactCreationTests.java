@@ -9,10 +9,29 @@ public class ContactCreationTests extends TestBase {
     @Test
     public void ContactCreationTests() {
         app.getContactHelper().initContactCreation();
-        app.getContactHelper().fillContactForm(
-                new ContactData("Vladimir", "Vitalievich", "Logvinov", "vlogvinov", "Mr.", "P4", "Zakrevskogo street 67", "5469878", "0639876756", "0994565678", "Fax", "volodymyr.logvinov@gmail.com", "my_second_email@gmail.com", "my_thirdemail@gmail.com", "myhomepage.com", "4", "4", "1993", "3", "2", "2003", "Dmitria Lucenka 13", "5679867", "My super notes"));
+        ContactData contact = new ContactData();
+            contact.setFirstName("Vladimir");
+            contact.setMiddleName("Vitalievich");
+            contact.setLastName("Logvinov");
+            contact.setNickName("vlogvinov");
+            contact.setTitle("Mr");
+            contact.setCompany("P4");
+            contact.setFirstAddress("Zakrevskogo street 67");
+            contact.setHomePhoneNumber("5469878");
+            contact.setMobilePhoneNumber("0639876756");
+            contact.setWorkPhoneNumber("0994565678");
+            contact.setFax("Fax");
+            contact.setMainEmail("volodymyr.logvinov@gmail.com");
+            contact.setSecondEmail("my_second_email@gmail.com");
+            contact.setThirdEmail("my_thirdemail@gmail.com");
+            contact.setHomePage("myhomepage.com");
+            contact.setSecondAddress("Dmitria Lucenka 13");
+            contact.setSecondHomePhoneNumber("5679867");
+            contact.setNotes("My super notes");
+        app.getContactHelper().fillContactForm(contact);
         app.getContactHelper().submitContactCreation();
         app.getContactHelper().returnToHomePage();
+        app.getSessionHelper().logout();
     }
 
 
