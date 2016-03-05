@@ -15,9 +15,12 @@ public class HelperBase {
 
     protected void type(By locator, String text) {
         if (text != null) {
-            click(locator);
-            clear(locator);
-            send(locator, text);
+            String existingText = browser.findElement(locator).getAttribute("value");
+            if (!text.equals(existingText)) {
+                click(locator);
+                clear(locator);
+                send(locator, text);
+            }
         }
     }
 
