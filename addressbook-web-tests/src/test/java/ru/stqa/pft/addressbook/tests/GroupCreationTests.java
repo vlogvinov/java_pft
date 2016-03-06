@@ -11,7 +11,7 @@ public class GroupCreationTests extends TestBase {
         app.getGroupHelper().initGroupCreation();
         GroupData group = new GroupData();
             group.setName("my group");
-            group.setHeader("my footer");
+            group.setHeader("my header");
             group.setFooter("my footer");
         app.getGroupHelper().fillGroupForm(group);
         app.getGroupHelper().submitGroupCreation();
