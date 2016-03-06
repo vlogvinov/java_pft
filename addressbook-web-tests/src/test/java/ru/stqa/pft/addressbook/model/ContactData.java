@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
+    private Boolean creation;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -22,15 +23,16 @@ public class ContactData {
     private String anniverDay;
     private String anniverMonth;
     private String anniverYear;
+    private String groupName;
     private String secondAddress;
     private String secondHomePhoneNumber;
     private String notes;
 
-    public ContactData(){
+    public ContactData() {
 
     }
 
-    public ContactData(String firstName, String middleName, String lastName, String nickName, String title, String company, String firstAddress, String homePhoneNumber, String mobilePhoneNumber, String workPhoneNumber, String fax, String mainEmail, String secondEmail, String thirdEmail, String homePage, String birthDay, String birthMonth, String birthYear, String anniverDay, String anniverMonth, String anniverYear, String secondAddress, String secondHomePhoneNumber, String notes) {
+    public ContactData(Boolean creation, String firstName, String middleName, String lastName, String nickName, String title, String company, String firstAddress, String homePhoneNumber, String mobilePhoneNumber, String workPhoneNumber, String fax, String mainEmail, String secondEmail, String thirdEmail, String homePage, String birthDay, String birthMonth, String birthYear, String anniverDay, String anniverMonth, String anniverYear, String groupName, String secondAddress, String secondHomePhoneNumber, String notes) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -52,6 +54,7 @@ public class ContactData {
         this.anniverDay = anniverDay;
         this.anniverMonth = anniverMonth;
         this.anniverYear = anniverYear;
+        this.groupName = groupName;
         this.secondAddress = secondAddress;
         this.secondHomePhoneNumber = secondHomePhoneNumber;
         this.notes = notes;
@@ -59,6 +62,9 @@ public class ContactData {
 
 
     /*                      GETTERS                                 */
+    public Boolean getCreation() {
+        return creation;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -144,6 +150,10 @@ public class ContactData {
         return anniverYear;
     }
 
+    public String getGroupName() {
+        return groupName;
+    }
+
     public String getSecondAddress() {
         return secondAddress;
     }
@@ -159,6 +169,10 @@ public class ContactData {
 
 
     /*          SETTERS                  */
+
+    public void setCreation(Boolean creation) {
+        this.creation = creation;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -242,6 +256,10 @@ public class ContactData {
 
     public void setAnniverYear(String anniverYear) {
         this.anniverYear = anniverYear;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
     public void setSecondAddress(String secondAddress) {

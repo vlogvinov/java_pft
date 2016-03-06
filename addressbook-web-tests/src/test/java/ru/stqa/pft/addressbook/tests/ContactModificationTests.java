@@ -10,9 +10,11 @@ public class ContactModificationTests extends TestBase {
         app.getContactHelper().selectContact();
         app.getContactHelper().editSelectedContact();
         ContactData contact = new ContactData();
+            contact.setCreation(false);
             contact.setFirstName("Modified");
             contact.setMiddleName("Modified");
             contact.setLastName("Modified");
+            contact.setGroupName(null);
         app.getContactHelper().fillContactForm(contact);
         app.getContactHelper().submitContactModification();
         app.getContactHelper().returnToHomePage();

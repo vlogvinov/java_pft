@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -37,8 +38,12 @@ public class HelperBase {
         browser.findElement(locator).click();
     }
 
-    protected void selectValueFromSelector(WebElement selectLocator, String value) {
-        Select select = new Select(selectLocator);
-        select.selectByValue(value);
+    protected boolean isElementPresent(By locator) {
+        try {
+            browser.findElement(locator);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }

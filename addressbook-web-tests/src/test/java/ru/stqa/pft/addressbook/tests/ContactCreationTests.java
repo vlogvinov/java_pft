@@ -10,6 +10,7 @@ public class ContactCreationTests extends TestBase {
     public void ContactCreationTests() {
         app.getContactHelper().initContactCreation();
         ContactData contact = new ContactData();
+            contact.setCreation(true);
             contact.setFirstName("Vladimir");
             contact.setMiddleName("Vitalievich");
             contact.setLastName("Logvinov");
@@ -25,6 +26,7 @@ public class ContactCreationTests extends TestBase {
             contact.setSecondEmail("my_second_email@gmail.com");
             contact.setThirdEmail("my_thirdemail@gmail.com");
             contact.setHomePage("myhomepage.com");
+            contact.setGroupName("my group");
             contact.setSecondAddress("Dmitria Lucenka 13");
             contact.setSecondHomePhoneNumber("5679867");
             contact.setNotes("My super notes");

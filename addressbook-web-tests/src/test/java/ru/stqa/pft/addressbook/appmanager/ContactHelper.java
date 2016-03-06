@@ -1,14 +1,16 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
-    public ContactHelper( WebDriver browser) {
+    public ContactHelper(WebDriver browser) {
         super(browser);
     }
 
@@ -47,6 +49,12 @@ public class ContactHelper extends HelperBase {
         type(By.name("ayear"), contact.getAnniverYear());*/
 
         /*  group  selector */
+        if (contact.getCreation()) {
+            System.out.println(contact.getCreation());
+            new Select(browser.findElement(By.name("new_group"))).selectByVisibleText(contact.getGroupName());
+        } else {
+            Assert.assertFalse(isElementPresent(By.name("new group")));
+        }
 
         type(By.name("address2"), contact.getSecondAddress());
         type(By.name("phone2"), contact.getSecondHomePhoneNumber());
@@ -59,6 +67,9 @@ public class ContactHelper extends HelperBase {
     }
 
     public void returnToHomePage() {
+        if (isElementPresent(By.id("maintable"))) {
+            return;
+        }
         click(By.linkText("home page"));
     }
 
