@@ -7,6 +7,13 @@ public class ContactModificationTests extends TestBase {
 
     @Test
     public void testContactModification(){
+        if(! app.getContactHelper().isThereAContact()){
+            ContactData contact = new ContactData();
+            contact.setFirstName("My first name");
+            contact.setMiddleName("My middle name");
+            contact.setLastName("My last name");
+            app.getContactHelper().createContact(contact);
+        }
         app.getContactHelper().selectContact();
         app.getContactHelper().editSelectedContact();
         ContactData contact = new ContactData();

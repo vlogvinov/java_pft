@@ -49,12 +49,12 @@ public class ContactHelper extends HelperBase {
         type(By.name("ayear"), contact.getAnniverYear());*/
 
         /*  group  selector */
-        if (contact.getCreation()) {
+     /*   if (contact.getCreation()) {
             System.out.println(contact.getCreation());
             new Select(browser.findElement(By.name("new_group"))).selectByVisibleText(contact.getGroupName());
         } else {
             Assert.assertFalse(isElementPresent(By.name("new group")));
-        }
+        }*/
 
         type(By.name("address2"), contact.getSecondAddress());
         type(By.name("phone2"), contact.getSecondHomePhoneNumber());
@@ -87,5 +87,16 @@ public class ContactHelper extends HelperBase {
 
     public void removeContact() {
         click(By.xpath("//input[@value='Delete']"));
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    public void createContact(ContactData contact) {
+        initContactCreation();
+        fillContactForm(contact);
+        submitContactCreation();
+        returnToHomePage();
     }
 }
