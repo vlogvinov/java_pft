@@ -56,4 +56,8 @@ public class GroupHelper extends HelperBase {
     public boolean isThereAGroup() {
         return isElementPresent(By.name("selected[]"));
     }
+
+    public int getGroupCount() {
+        return browser.findElements(By.xpath("//input[@type='checkbox']")).size();
+    }
 }
