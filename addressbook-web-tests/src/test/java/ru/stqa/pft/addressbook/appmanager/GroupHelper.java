@@ -2,12 +2,15 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroupHelper extends HelperBase {
 
-    public GroupHelper( WebDriver browser) {
+    public GroupHelper(WebDriver browser) {
         super(browser);
     }
 
@@ -29,8 +32,8 @@ public class GroupHelper extends HelperBase {
         click(By.linkText("group page"));
     }
 
-    public void selectGroup() {
-        click(By.name("selected[]"));
+    public void selectGroup(int index) {
+        browser.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void deleteSelectedGroups() {
@@ -59,5 +62,17 @@ public class GroupHelper extends HelperBase {
 
     public int getGroupCount() {
         return browser.findElements(By.xpath("//input[@type='checkbox']")).size();
+    }
+
+    public List<GroupData> getGroupList() {
+        List<GroupData> groups = new ArrayList<GroupData>();
+        List<WebElement> elements = browser.findElements(By.xpath("//span[@class='group']"));
+        for (WebElement element : elements) {
+            String name = element.getText();
+            GroupData group = new GroupData();
+            group.setName(name);
+            groups.add(group);
+        }
+        return groups;
     }
 }
