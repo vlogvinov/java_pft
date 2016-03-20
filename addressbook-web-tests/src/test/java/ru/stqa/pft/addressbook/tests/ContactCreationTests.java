@@ -17,6 +17,7 @@ public class ContactCreationTests extends TestBase {
         List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().initContactCreation();
         ContactData contact = new ContactData();
+        contact.setId(Integer.MAX_VALUE);
             contact.setCreation(true);
             contact.setFirstName("Vladimir");
             contact.setMiddleName("Vitalievich");
@@ -64,7 +65,11 @@ public class ContactCreationTests extends TestBase {
         contact.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
         before.add(contact);
 
-        Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+        Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+        before.sort(byId);
+        after.sort(byId);
+
+        Assert.assertEquals(before, after);
 
         app.getSessionHelper().logout();
     }
