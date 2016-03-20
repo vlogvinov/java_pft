@@ -17,7 +17,7 @@ public class ContactModificationTests extends TestBase {
         }
         int before = app.getContactHelper().getContactCount();
 
-        app.getContactHelper().selectContact();
+        app.getContactHelper().selectContact(before - 1);
         app.getContactHelper().editSelectedContact();
         ContactData contact = new ContactData();
             contact.setCreation(false);

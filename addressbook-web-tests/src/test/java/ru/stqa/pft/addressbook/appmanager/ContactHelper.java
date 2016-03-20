@@ -73,8 +73,8 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("home page"));
     }
 
-    public void selectContact() {
-        click(By.xpath("(//input[@type='checkbox'])[1]"));
+    public void selectContact(int index) {
+        browser.findElements(By.xpath("//input[@type='checkbox' and @name='selected[]']")).get(index).click();
     }
 
     public void editSelectedContact() {
