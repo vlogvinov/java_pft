@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
+    private int id;
     private Boolean creation;
     private String firstName;
     private String middleName;
@@ -32,7 +33,8 @@ public class ContactData {
 
     }
 
-    public ContactData(Boolean creation, String firstName, String middleName, String lastName, String nickName, String title, String company, String firstAddress, String homePhoneNumber, String mobilePhoneNumber, String workPhoneNumber, String fax, String mainEmail, String secondEmail, String thirdEmail, String homePage, String birthDay, String birthMonth, String birthYear, String anniverDay, String anniverMonth, String anniverYear, String groupName, String secondAddress, String secondHomePhoneNumber, String notes) {
+    public ContactData(int id, Boolean creation, String firstName, String middleName, String lastName, String nickName, String title, String company, String firstAddress, String homePhoneNumber, String mobilePhoneNumber, String workPhoneNumber, String fax, String mainEmail, String secondEmail, String thirdEmail, String homePage, String birthDay, String birthMonth, String birthYear, String anniverDay, String anniverMonth, String anniverYear, String groupName, String secondAddress, String secondHomePhoneNumber, String notes) {
+        this.id = id;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -62,6 +64,10 @@ public class ContactData {
 
 
     /*                      GETTERS                                 */
+    public int getId() {
+        return id;
+    }
+
     public Boolean getCreation() {
         return creation;
     }
@@ -170,6 +176,10 @@ public class ContactData {
 
     /*          SETTERS                  */
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setCreation(Boolean creation) {
         this.creation = creation;
     }
@@ -272,5 +282,35 @@ public class ContactData {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ContactData that = (ContactData) o;
+
+        if (id != that.id) return false;
+        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+        return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        return result;
     }
 }

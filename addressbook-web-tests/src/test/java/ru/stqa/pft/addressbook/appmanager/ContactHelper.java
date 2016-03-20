@@ -8,6 +8,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase {
     public ContactHelper(WebDriver browser) {
@@ -102,5 +106,27 @@ public class ContactHelper extends HelperBase {
 
     public int getContactCount() {
         return browser.findElements(By.xpath("//input[@type='checkbox' and @name='selected[]']")).size();
+    }
+
+    public List<ContactData> getContactList() {
+        List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> elements = browser.findElements(By.xpath("//tr[@name='entry']"));
+        for (WebElement element : elements) {
+            int id = Integer.parseInt(element.findElement(By.xpath("td[1]/input")).getAttribute("value"));
+            String firstName = element.findElement(By.xpath("td[3]")).getText();
+            String lastName = element.findElement(By.xpath("td[2]")).getText();
+            String address = element.findElement(By.xpath("td[4]")).getText();
+            String mainEmail = element.findElement(By.xpath("td[5]/a[1]")).getText();
+
+            ContactData contact = new ContactData();
+            contact.setId(id);
+            contact.setFirstName(firstName);
+            contact.setLastName(lastName);
+            contact.setFirstAddress(address);
+            contact.setMainEmail(mainEmail);
+            contacts.add(contact);
+        }
+
+        return contacts;
     }
 }
