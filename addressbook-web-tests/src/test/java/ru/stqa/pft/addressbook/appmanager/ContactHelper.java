@@ -99,4 +99,8 @@ public class ContactHelper extends HelperBase {
         submitContactCreation();
         returnToHomePage();
     }
+
+    public int getContactCount() {
+        return browser.findElements(By.xpath("//input[@type='checkbox' and @name='selected[]']")).size();
+    }
 }

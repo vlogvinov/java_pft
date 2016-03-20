@@ -16,4 +16,8 @@ public class NavigationHelper extends HelperBase {
         }
         click(By.linkText("groups"));
     }
+
+    public void goToHomePae(){
+        browser.get("http://addressbook/");
+    }
 }
