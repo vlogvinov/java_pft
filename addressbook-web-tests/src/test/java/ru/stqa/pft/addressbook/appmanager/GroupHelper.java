@@ -14,6 +14,34 @@ public class GroupHelper extends HelperBase {
         super(browser);
     }
 
+    /*
+    HIGH LEVEL METHODS -------------------------------------------------------------------------------------------------
+    */
+
+    public void create(GroupData group) {
+        initGroupCreation();
+        fillGroupForm(group);
+        submitGroupCreation();
+        returnToGroupsPage();
+    }
+
+    public void modify(int index, GroupData group){
+        initGroupModification();
+        fillGroupForm(group);
+        submitGroupModification();
+        returnToGroupsPage();
+    }
+
+    public void remove(int index) {
+        selectGroup(index);
+        deleteSelectedGroups();
+        returnToGroupsPage();
+    }
+
+    /*
+    LOW LEVEL METHODS  -------------------------------------------------------------------------------------------------
+    */
+
     public void initGroupCreation() {
         click(By.name("new"));
     }
@@ -36,10 +64,6 @@ public class GroupHelper extends HelperBase {
         browser.findElements(By.name("selected[]")).get(index).click();
     }
 
-    public void deleteSelectedGroups() {
-        click(By.name("delete"));
-    }
-
     public void initGroupModification() {
         click(By.name("edit"));
     }
@@ -48,23 +72,15 @@ public class GroupHelper extends HelperBase {
         click(By.name("update"));
     }
 
-    public void createGroup(GroupData group) {
-        initGroupCreation();
-        fillGroupForm(group);
-        submitGroupCreation();
-        returnToGroupsPage();
-
+    public void deleteSelectedGroups() {
+        click(By.name("delete"));
     }
 
-    public boolean isThereAGroup() {
-        return isElementPresent(By.name("selected[]"));
-    }
+    /*
+    ASSERTS ------------------------------------------------------------------------------------------------------------
+    */
 
-    public int getGroupCount() {
-        return browser.findElements(By.xpath("//input[@type='checkbox']")).size();
-    }
-
-    public List<GroupData> getGroupList() {
+    public List<GroupData> list() {
         List<GroupData> groups = new ArrayList<GroupData>();
         List<WebElement> elements = browser.findElements(By.xpath("//span[@class='group']"));
         for (WebElement element : elements) {
@@ -76,4 +92,13 @@ public class GroupHelper extends HelperBase {
         }
         return groups;
     }
+
+    public boolean isThereAGroup() {
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    public int getGroupCount() {
+        return browser.findElements(By.xpath("//input[@type='checkbox']")).size();
+    }
+
 }

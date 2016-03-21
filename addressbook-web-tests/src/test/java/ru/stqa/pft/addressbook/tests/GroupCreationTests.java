@@ -1,29 +1,31 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class GroupCreationTests extends TestBase {
 
+    @BeforeMethod
+    public void ensurePreconditions(){
+        app.goTo().groupPage();
+    }
+
     @Test
     public void testGroupCreation() {
-        app.getNavigationHelper().goToGroupsPage();
-        List<GroupData> before = app.getGroupHelper().getGroupList();
-        app.getGroupHelper().initGroupCreation();
+        List<GroupData> before = app.group().list();
+
         GroupData group = new GroupData();
-        group.setName("my group");
-        group.setHeader("my header");
-        group.setFooter("my footer");
-        app.getGroupHelper().fillGroupForm(group);
-        app.getGroupHelper().submitGroupCreation();
-        app.getGroupHelper().returnToGroupsPage();
-        List<GroupData> after = app.getGroupHelper().getGroupList();
-        Assert.assertEquals(after.size(), before.size() + 1);
+            group.setName("my group");
+            group.setHeader("my header");
+            group.setFooter("my footer");
+        app.group().create(group);
+
+        List<GroupData> after = app.group().list();
 
 
         before.add(group);
@@ -33,7 +35,6 @@ public class GroupCreationTests extends TestBase {
         after.sort(byId);
         Assert.assertEquals(before, after);
 
-        app.getSessionHelper().logout();
     }
 
 }

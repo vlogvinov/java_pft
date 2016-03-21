@@ -10,7 +10,7 @@ public class NavigationHelper extends HelperBase {
         super(browser);
     }
 
-    public void goToGroupsPage() {
+    public void groupPage() {
         if (isElementPresent(By.tagName("h1")) && browser.findElement(By.tagName("h1")).getText().equals("Groups") && isElementPresent(By.name("new"))) {
             return;
         }
