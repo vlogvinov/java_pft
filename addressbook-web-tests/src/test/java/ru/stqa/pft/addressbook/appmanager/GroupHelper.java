@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupHelper extends HelperBase {
 
@@ -25,7 +27,7 @@ public class GroupHelper extends HelperBase {
         returnToGroupsPage();
     }
 
-    public void modify(int index, GroupData group){
+    public void modify(GroupData group){
         initGroupModification();
         fillGroupForm(group);
         submitGroupModification();
@@ -34,6 +36,12 @@ public class GroupHelper extends HelperBase {
 
     public void remove(int index) {
         selectGroup(index);
+        deleteSelectedGroups();
+        returnToGroupsPage();
+    }
+
+    public void remove(GroupData group) {
+        selectGroupById(group.getId());
         deleteSelectedGroups();
         returnToGroupsPage();
     }
@@ -64,6 +72,10 @@ public class GroupHelper extends HelperBase {
         browser.findElements(By.name("selected[]")).get(index).click();
     }
 
+    private void selectGroupById(int id) {
+        browser.findElement(By.xpath("//input[@value='" + id +"']")).click();
+    }
+
     public void initGroupModification() {
         click(By.name("edit"));
     }
@@ -92,6 +104,18 @@ public class GroupHelper extends HelperBase {
         return groups;
     }
 
+    public Set<GroupData> all() {
+        Set<GroupData> groups = new HashSet<GroupData>();
+        List<WebElement> elements = browser.findElements(By.xpath("//span[@class='group']"));
+        for (WebElement element : elements) {
+            String name = element.getText();
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            GroupData group = new GroupData().withName(name);
+            groups.add(group);
+        }
+        return groups;
+    }
+
     public boolean isThereAGroup() {
         return isElementPresent(By.name("selected[]"));
     }
@@ -99,5 +123,4 @@ public class GroupHelper extends HelperBase {
     public int getGroupCount() {
         return browser.findElements(By.xpath("//input[@type='checkbox']")).size();
     }
-
 }
