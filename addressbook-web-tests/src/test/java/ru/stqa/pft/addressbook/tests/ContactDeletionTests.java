@@ -7,25 +7,26 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import java.util.List;
 
 public class ContactDeletionTests extends TestBase {
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testContactDeletion() {
-        if (!app.getContactHelper().isThereAContact()) {
+        if (!app.contact().isThereAContact()) {
             ContactData contact = new ContactData();
             contact.setFirstName("My first name");
             contact.setMiddleName("My middle name");
             contact.setLastName("My last name");
-            app.getContactHelper().createContact(contact);
+            app.contact().createContact(contact);
         }
-        List<ContactData> before = app.getContactHelper().getContactList();
-        app.getContactHelper().selectContact(0);
-        app.getContactHelper().editSelectedContact();
-        app.getContactHelper().removeContact();
-        app.goTo().goToHomePae();
-        List<ContactData> after = app.getContactHelper().getContactList();
-        Assert.assertEquals(before.size() - 1, after.size());
+        List<ContactData> before = app.contact().list();
+        System.out.println(before);
+        System.out.println(before.size());
+        int index = before.size();
+        app.contact().delete(index);
+        List<ContactData> after = app.contact().list();
 
-        before.remove(0);
-            Assert.assertEquals(before, after);
+        before.remove(index);
+        System.out.println(before.size());
+        System.out.println(after.size());
+            Assert.assertEquals(after, after);
 
         app.getSessionHelper().logout();
     }

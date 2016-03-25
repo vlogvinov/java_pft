@@ -1,14 +1,9 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,7 +103,7 @@ public class ContactHelper extends HelperBase {
         return browser.findElements(By.xpath("//input[@type='checkbox' and @name='selected[]']")).size();
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = browser.findElements(By.xpath("//tr[@name='entry']"));
         for (WebElement element : elements) {
@@ -128,5 +123,30 @@ public class ContactHelper extends HelperBase {
         }
 
         return contacts;
+    }
+
+    /*
+    Hight-levle
+     */
+    public void create(ContactData contact) {
+        initContactCreation();
+        fillContactForm(contact);
+        submitContactCreation();
+        returnToHomePage();
+    }
+
+    public void delete(int index) {
+        selectContact(index);
+        editSelectedContact();
+        removeContact();
+    }
+
+    public void modify(int index, ContactData contact) {
+        selectContact(index - 1);
+        editSelectedContact();
+        fillContactForm(contact);
+        submitContactModification();
+        returnToHomePage();
+
     }
 }

@@ -2,7 +2,6 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class NavigationHelper extends HelperBase {
 
@@ -17,7 +16,7 @@ public class NavigationHelper extends HelperBase {
         click(By.linkText("groups"));
     }
 
-    public void goToHomePae(){
+    public void homePage(){
         browser.get("http://addressbook/");
     }
 }

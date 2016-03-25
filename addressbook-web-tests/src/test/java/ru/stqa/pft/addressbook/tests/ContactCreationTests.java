@@ -4,20 +4,17 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
-
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class ContactCreationTests extends TestBase {
 
     @Test
     public void ContactCreationTests() {
-        List<ContactData> before = app.getContactHelper().getContactList();
-        app.getContactHelper().initContactCreation();
+        List<ContactData> before = app.contact().list();
+
         ContactData contact = new ContactData();
-        contact.setId(Integer.MAX_VALUE);
+            contact.setId(Integer.MAX_VALUE);
             contact.setCreation(true);
             contact.setFirstName("Vladimir");
             contact.setMiddleName("Vitalievich");
@@ -38,10 +35,8 @@ public class ContactCreationTests extends TestBase {
             contact.setSecondAddress("Dmitria Lucenka 13");
             contact.setSecondHomePhoneNumber("5679867");
             contact.setNotes("My super notes");
-        app.getContactHelper().fillContactForm(contact);
-        app.getContactHelper().submitContactCreation();
-        app.getContactHelper().returnToHomePage();
-        List<ContactData> after = app.getContactHelper().getContactList();
+        app.contact().create(contact);
+        List<ContactData> after = app.contact().list();
         Assert.assertEquals(before.size() + 1, after.size());
 
 

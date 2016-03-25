@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
-import sun.plugin.dom.exception.BrowserNotSupportedException;
 
 import java.util.concurrent.TimeUnit;
 
@@ -56,7 +55,7 @@ public class ApplicationManager {
         return sessionHelper;
     }
 
-    public ContactHelper getContactHelper() {
+    public ContactHelper contact() {
         return contactHelper;
     }
 }

@@ -10,30 +10,30 @@ public class ContactModificationTests extends TestBase {
 
     @Test
     public void testContactModification(){
-        if(! app.getContactHelper().isThereAContact()) {
+        if(! app.contact().isThereAContact()) {
             ContactData contact = new ContactData();
             contact.setFirstName("My first name");
             contact.setMiddleName("My middle name");
             contact.setLastName("My last name");
-            app.getContactHelper().createContact(contact);
+            app.contact().createContact(contact);
         }
-        List<ContactData> before = app.getContactHelper().getContactList();
+        List<ContactData> before = app.contact().list();
 
-        app.getContactHelper().selectContact(before.size() - 1);
-        app.getContactHelper().editSelectedContact();
+
+        int index = before.size() - 1;
         ContactData contact = new ContactData();
             contact.setId(before.get(before.size() -1).getId());
             contact.setFirstName("Modified");
             contact.setMiddleName("Modified");
-            contact.setLastName("Modified");
-        app.getContactHelper().fillContactForm(contact);
-        app.getContactHelper().submitContactModification();
-        app.getContactHelper().returnToHomePage();
-        List<ContactData> after = app.getContactHelper().getContactList();
+       //     contact.setLastName("Modified");
+        app.contact().modify(index, contact);
+
+        List<ContactData> after = app.contact().list();
+
 
         before.remove(before.size() - 1);
         before.add(contact);
-
+        System.out.println(before.size());
         Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
         before.sort(byId);
         after.sort(byId);

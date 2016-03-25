@@ -4,8 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -28,15 +28,10 @@ public class GroupHelper extends HelperBase {
     }
 
     public void modify(GroupData group){
+        selectGroupById(group.getId());
         initGroupModification();
         fillGroupForm(group);
         submitGroupModification();
-        returnToGroupsPage();
-    }
-
-    public void remove(int index) {
-        selectGroup(index);
-        deleteSelectedGroups();
         returnToGroupsPage();
     }
 
@@ -68,10 +63,6 @@ public class GroupHelper extends HelperBase {
         click(By.linkText("group page"));
     }
 
-    public void selectGroup(int index) {
-        browser.findElements(By.name("selected[]")).get(index).click();
-    }
-
     private void selectGroupById(int id) {
         browser.findElement(By.xpath("//input[@value='" + id +"']")).click();
     }
@@ -92,25 +83,13 @@ public class GroupHelper extends HelperBase {
     ASSERTS ------------------------------------------------------------------------------------------------------------
     */
 
-    public List<GroupData> list() {
-        List<GroupData> groups = new ArrayList<GroupData>();
+    public Groups all() {
+        Groups groups = new Groups();
         List<WebElement> elements = browser.findElements(By.xpath("//span[@class='group']"));
         for (WebElement element : elements) {
             String name = element.getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            GroupData group = new GroupData().withName(name);
-            groups.add(group);
-        }
-        return groups;
-    }
-
-    public Set<GroupData> all() {
-        Set<GroupData> groups = new HashSet<GroupData>();
-        List<WebElement> elements = browser.findElements(By.xpath("//span[@class='group']"));
-        for (WebElement element : elements) {
-            String name = element.getText();
-            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            GroupData group = new GroupData().withName(name);
+            GroupData group = new GroupData().withName(name).withId(id);
             groups.add(group);
         }
         return groups;
