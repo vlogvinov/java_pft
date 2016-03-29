@@ -6,12 +6,13 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 public class ContactCreationTests extends TestBase {
 
     @Test
     public void ContactCreationTests() {
-        List<ContactData> before = app.contact().list();
+        Set<ContactData> before = app.contact().all();
 
         ContactData contact = new ContactData().withId(Integer.MAX_VALUE).withCreation(true).withFirstName("Vladimir")
             .withMiddleName("Vitalievich").withLastName("Logvinov").withNickName("vlogvinov").withTitle("Mr")
@@ -20,21 +21,12 @@ public class ContactCreationTests extends TestBase {
             .withMainEmail("volodymyr.logvinov@gmail.com").withSecondEmail("my_second_email@gmail.com").withThirdEmail("my_thirdemail@gmail.com")
             .withHomePage("myhomepage.com").withSecondAddress("Dmitria Lucenka 13").withSecondHomePhoneNumber("5679867").withNotes("My super notes");
         app.contact().create(contact);
-        List<ContactData> after = app.contact().list();
-        Assert.assertEquals(before.size() + 1, after.size());
+        Set<ContactData> after = app.contact().all();
 
-
-
-        contact.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
+        contact.setId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt());
         before.add(contact);
 
-        Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-        before.sort(byId);
-        after.sort(byId);
-
         Assert.assertEquals(before, after);
-
-        app.getSessionHelper().logout();
     }
 
 

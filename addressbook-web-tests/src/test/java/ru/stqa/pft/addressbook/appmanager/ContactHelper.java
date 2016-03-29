@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
     public ContactHelper(WebDriver browser) {
@@ -105,6 +107,24 @@ public class ContactHelper extends HelperBase {
 
     public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> elements = browser.findElements(By.xpath("//tr[@name='entry']"));
+        for (WebElement element : elements) {
+            int id = Integer.parseInt(element.findElement(By.xpath("td[1]/input")).getAttribute("value"));
+            String firstName = element.findElement(By.xpath("td[3]")).getText();
+            String lastName = element.findElement(By.xpath("td[2]")).getText();
+            String address = element.findElement(By.xpath("td[4]")).getText();
+            String mainEmail = element.findElement(By.xpath("td[5]/a[1]")).getText();
+
+            ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName)
+                    .withFirstAddress(address).withMainEmail(mainEmail);
+            contacts.add(contact);
+        }
+
+        return contacts;
+    }
+
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<ContactData>();
         List<WebElement> elements = browser.findElements(By.xpath("//tr[@name='entry']"));
         for (WebElement element : elements) {
             int id = Integer.parseInt(element.findElement(By.xpath("td[1]/input")).getAttribute("value"));
