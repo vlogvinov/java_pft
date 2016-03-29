@@ -29,40 +29,6 @@ public class ContactData {
     private String secondHomePhoneNumber;
     private String notes;
 
-    public ContactData() {
-
-    }
-
-    public ContactData(int id, Boolean creation, String firstName, String middleName, String lastName, String nickName, String title, String company, String firstAddress, String homePhoneNumber, String mobilePhoneNumber, String workPhoneNumber, String fax, String mainEmail, String secondEmail, String thirdEmail, String homePage, String birthDay, String birthMonth, String birthYear, String anniverDay, String anniverMonth, String anniverYear, String groupName, String secondAddress, String secondHomePhoneNumber, String notes) {
-        this.id = id;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.nickName = nickName;
-        this.title = title;
-        this.company = company;
-        this.firstAddress = firstAddress;
-        this.homePhoneNumber = homePhoneNumber;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-        this.workPhoneNumber = workPhoneNumber;
-        this.fax = fax;
-        this.mainEmail = mainEmail;
-        this.secondEmail = secondEmail;
-        this.thirdEmail = thirdEmail;
-        this.homePage = homePage;
-        this.birthDay = birthDay;
-        this.birthMonth = birthMonth;
-        this.birthYear = birthYear;
-        this.anniverDay = anniverDay;
-        this.anniverMonth = anniverMonth;
-        this.anniverYear = anniverYear;
-        this.groupName = groupName;
-        this.secondAddress = secondAddress;
-        this.secondHomePhoneNumber = secondHomePhoneNumber;
-        this.notes = notes;
-    }
-
-
     /*                      GETTERS                                 */
     public int getId() {
         return id;
@@ -282,6 +248,143 @@ public class ContactData {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+
+    /*          FLUENT SETTERS    */
+
+    public ContactData withId(int id){
+        this.id = id;
+        return this;
+    }
+
+    public ContactData withCreation(Boolean creation){
+        this.creation = creation;
+        return this;
+    }
+
+    public ContactData withFirstName(String firstName){
+        this.firstName = firstName;
+        return this;
+    }
+
+    public ContactData withMiddleName(String middleName){
+        this.middleName = middleName;
+        return this;
+    }
+
+    public ContactData withLastName(String lastName){
+        this.lastName = lastName;
+        return this;
+    }
+
+    public ContactData withNickName(String nickName){
+        this.nickName = nickName;
+        return this;
+    }
+
+    public ContactData withTitle(String title){
+        this.title = title;
+        return this;
+    }
+
+    public ContactData withCompany(String company){
+        this.company = company;
+        return this;
+    }
+
+    public ContactData withFirstAddress(String firstAddress){
+        this.firstName = firstAddress;
+        return this;
+    }
+
+    public ContactData withPhoneNumber(String homePhoneNumber){
+        this.homePhoneNumber = homePhoneNumber;
+        return this;
+    }
+
+    public ContactData withMobilePhoneNumber(String mobilePhoneNumber){
+        this.mobilePhoneNumber = mobilePhoneNumber;
+        return this;
+    }
+    public ContactData withWorkPhoneNumber(String workPhoneNumber){
+        this.workPhoneNumber = workPhoneNumber;
+        return this;
+    }
+
+    public ContactData withFax(String fax){
+        this.fax = fax;
+        return this;
+    }
+
+    public ContactData withMainEmail(String mainEmail){
+        this.mainEmail = mainEmail;
+        return this;
+    }
+
+    public ContactData withSecondEmail(String secondEmail){
+        this.secondEmail = secondEmail;
+        return this;
+    }
+
+    public ContactData withThirdEmail(String thirdEmail){
+        this.thirdEmail = thirdEmail;
+        return this;
+    }
+
+    public ContactData withHomePage(String homePage){
+        this.homePage = homePage;
+        return this;
+    }
+
+    public ContactData withBirthDay(String birthDay){
+        this.birthDay = birthDay;
+        return this;
+    }
+
+    public ContactData withBirthMonth(String birthMonth){
+        this.birthDay = birthMonth;
+        return this;
+    }
+
+    public ContactData withBirthYear(String birthYear){
+        this.birthYear = birthYear;
+        return this;
+    }
+
+    public ContactData withAnniverDay(String anniverDay){
+        this.anniverDay = anniverDay;
+        return this;
+    }
+
+    public ContactData withAnniverMonth(String anniverMonth){
+        this.anniverMonth = anniverMonth;
+        return this;
+    }
+
+    public ContactData withAnniverYear(String anniverYear){
+        this.anniverYear = anniverMonth;
+        return this;
+    }
+
+    public ContactData withGroupName(String groupName){
+        this.groupName = groupName;
+        return this;
+    }
+
+    public ContactData withSecondAddress(String secondAddress){
+        this.secondAddress = secondAddress;
+        return this;
+    }
+
+    public ContactData withSecondHomePhoneNumber(String secondHomePhoneNumber){
+        this.secondHomePhoneNumber = secondHomePhoneNumber;
+        return this;
+    }
+
+    public ContactData withNotes(String notes){
+        this.notes = notes;
+        return this;
     }
 
     @Override

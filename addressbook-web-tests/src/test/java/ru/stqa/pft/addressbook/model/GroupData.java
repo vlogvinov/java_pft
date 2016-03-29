@@ -6,9 +6,6 @@ public class GroupData {
     private String header;
     private String footer;
 
-    public GroupData() {
-
-    }
 
     /*         GETTERS             */
 
@@ -28,6 +25,7 @@ public class GroupData {
         return id;
     }
 
+
     /*         SETTERS             */
 
     public void setName(String name) {
@@ -45,6 +43,7 @@ public class GroupData {
     public void setId(int id) {
         this.id = id;
     }
+
 
     /*          FLUENT SETTERS    */
 

@@ -13,47 +13,15 @@ public class ContactCreationTests extends TestBase {
     public void ContactCreationTests() {
         List<ContactData> before = app.contact().list();
 
-        ContactData contact = new ContactData();
-            contact.setId(Integer.MAX_VALUE);
-            contact.setCreation(true);
-            contact.setFirstName("Vladimir");
-            contact.setMiddleName("Vitalievich");
-            contact.setLastName("Logvinov");
-            contact.setNickName("vlogvinov");
-            contact.setTitle("Mr");
-            contact.setCompany("P4");
-            contact.setFirstAddress("Zakrevskogo street 67");
-            contact.setHomePhoneNumber("5469878");
-            contact.setMobilePhoneNumber("0639876756");
-            contact.setWorkPhoneNumber("0994565678");
-            contact.setFax("Fax");
-            contact.setMainEmail("volodymyr.logvinov@gmail.com");
-            contact.setSecondEmail("my_second_email@gmail.com");
-            contact.setThirdEmail("my_thirdemail@gmail.com");
-            contact.setHomePage("myhomepage.com");
-            contact.setGroupName("my group");
-            contact.setSecondAddress("Dmitria Lucenka 13");
-            contact.setSecondHomePhoneNumber("5679867");
-            contact.setNotes("My super notes");
+        ContactData contact = new ContactData().withId(Integer.MAX_VALUE).withCreation(true).withFirstName("Vladimir")
+            .withMiddleName("Vitalievich").withLastName("Logvinov").withNickName("vlogvinov").withTitle("Mr")
+            .withCompany("P4").withFirstAddress("Zakrevskogo street 67").withPhoneNumber("5469878")
+            .withMobilePhoneNumber("0639876756").withWorkPhoneNumber("0994565678").withFax("Fax")
+            .withMainEmail("volodymyr.logvinov@gmail.com").withSecondEmail("my_second_email@gmail.com").withThirdEmail("my_thirdemail@gmail.com")
+            .withHomePage("myhomepage.com").withSecondAddress("Dmitria Lucenka 13").withSecondHomePhoneNumber("5679867").withNotes("My super notes");
         app.contact().create(contact);
         List<ContactData> after = app.contact().list();
         Assert.assertEquals(before.size() + 1, after.size());
-
-
-      /*  int max = 0;
-        for(ContactData c : after ){
-            if(c.getId() > max){
-                max = c.getId();
-            }
-        }*/
-
-       /* Comparator<? super ContactData> ById = new Comparator<ContactData>() {
-            @Override
-            public int compare(ContactData o1, ContactData o2) {
-                return Integer.compare(o1.getId(), o2.getId());
-            }
-        };*/
-
 
 
 
