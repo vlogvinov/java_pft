@@ -157,12 +157,22 @@ public class ContactHelper extends HelperBase {
         removeContact();
     }
 
-    public void modify(int index, ContactData contact) {
-        selectContact(index - 1);
+    public void modify(ContactData contact) {
+        selectContactById(contact.getId());
         editSelectedContact();
         fillContactForm(contact);
         submitContactModification();
         returnToHomePage();
 
+    }
+
+    public void delete(ContactData contact) {
+        selectContactById(contact.getId());
+        editSelectedContact();
+        removeContact();
+    }
+
+    private void selectContactById(int id) {
+        browser.findElement(By.xpath("//tr[@name='entry']//input[@id='" + id + "']")).click();
     }
 }

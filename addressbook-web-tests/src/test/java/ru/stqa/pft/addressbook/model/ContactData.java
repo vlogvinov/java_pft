@@ -294,7 +294,7 @@ public class ContactData {
     }
 
     public ContactData withFirstAddress(String firstAddress){
-        this.firstName = firstAddress;
+        this.firstAddress = firstAddress;
         return this;
     }
 
