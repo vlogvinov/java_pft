@@ -1,16 +1,19 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import org.apache.bcel.generic.BREAKPOINT;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
     private Contacts contactCache = null;
+
     public ContactHelper(WebDriver browser) {
         super(browser);
     }
@@ -124,7 +127,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public Contacts all() {
-        if(contactCache != null){
+        if (contactCache != null) {
             return new Contacts(contactCache);
         }
         contactCache = new Contacts();
@@ -135,9 +138,13 @@ public class ContactHelper extends HelperBase {
             String lastName = element.findElement(By.xpath("td[2]")).getText();
             String address = element.findElement(By.xpath("td[4]")).getText();
             String mainEmail = element.findElement(By.xpath("td[5]/a[1]")).getText();
+            String allPhones = browser.findElement(By.xpath("//tr[@name='entry']/td[6]")).getText();
+          //  String[] phones = allPhones.split("\n");
+
 
             ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName)
-                    .withFirstAddress(address).withMainEmail(mainEmail);
+                    .withFirstAddress(address).withMainEmail(mainEmail).withAllPhones(allPhones);
+                    //.withPhoneNumber(phones[0]).withMobilePhoneNumber(phones[1]).withWorkPhoneNumber(phones[2]);
             contactCache.add(contact);
         }
 
@@ -164,8 +171,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void modify(ContactData contact) {
-        selectContactById(contact.getId());
-        editSelectedContact(contact.getId());
+        initContactModification(contact);
         fillContactForm(contact);
         submitContactModification();
         contactCache = null;
@@ -173,19 +179,34 @@ public class ContactHelper extends HelperBase {
 
     }
 
-    public void delete(ContactData contact) {
+    private void initContactModification(ContactData contact) {
         selectContactById(contact.getId());
         editSelectedContact(contact.getId());
+    }
+
+    public void delete(ContactData contact) {
+        initContactModification(contact);
         removeContact();
         contactCache = null;
         returnToHomePageByGet();
     }
 
     private void selectContactById(int id) {
-        browser.findElement(By.xpath("//tr[@name='entry']//input[@id='" + id + "']")).click();
+
     }
 
-    private void returnToHomePageByGet(){
+    private void returnToHomePageByGet() {
         browser.get("http://addressbook/");
+    }
+
+    public ContactData InfoFromEditContact(ContactData contact) {
+        initContactModification(contact);
+        String firstname = browser.findElement(By.xpath("//input[@name='firstname']")).getAttribute("value");
+        String lastname = browser.findElement(By.xpath("//input[@name='lastname']")).getAttribute("value");
+        String home = browser.findElement(By.xpath("//input[@name='home']")).getAttribute("value");
+        String mobile = browser.findElement(By.xpath("//input[@name='mobile']")).getAttribute("value");
+        String work = browser.findElement(By.xpath("//input[@name='work']")).getAttribute("value");
+        browser.navigate().back();
+        return new ContactData().withFirstName(firstname).withLastName(lastname).withPhoneNumber(home).withMobilePhoneNumber(mobile).withWorkPhoneNumber(work);
     }
 }

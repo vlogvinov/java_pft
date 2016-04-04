@@ -28,6 +28,7 @@ public class ContactData {
     private String secondAddress;
     private String secondHomePhoneNumber;
     private String notes;
+    private String allPhones;
 
     /*                      GETTERS                                 */
     public int getId() {
@@ -136,6 +137,10 @@ public class ContactData {
 
     public String getNotes() {
         return notes;
+    }
+
+    public String getAllPhones(String allPhones) {
+        return allPhones;
     }
 
 
@@ -248,6 +253,10 @@ public class ContactData {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public void setAllPhones(String allPhones) {
+        this.allPhones = allPhones;
     }
 
 
@@ -384,6 +393,11 @@ public class ContactData {
 
     public ContactData withNotes(String notes){
         this.notes = notes;
+        return this;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
         return this;
     }
 
