@@ -5,14 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
-import ru.stqa.pft.addressbook.model.Groups;
-
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends HelperBase {
+
+    private Contacts contactCache = null;
     public ContactHelper(WebDriver browser) {
         super(browser);
     }
@@ -80,8 +78,8 @@ public class ContactHelper extends HelperBase {
         browser.findElements(By.xpath("//input[@type='checkbox' and @name='selected[]']")).get(index).click();
     }
 
-    public void editSelectedContact() {
-        click(By.xpath("//tr[2]/td[8]//img"));
+    public void editSelectedContact(int id) {
+        click(By.xpath("//tr[@name='entry']/td[1]/input[@id='" + id + "']/../../td[8]//img"));
     }
 
     public void submitContactModification() {
@@ -103,7 +101,7 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
-    public int getContactCount() {
+    public int count() {
         return browser.findElements(By.xpath("//input[@type='checkbox' and @name='selected[]']")).size();
     }
 
@@ -126,7 +124,10 @@ public class ContactHelper extends HelperBase {
     }
 
     public Contacts all() {
-        Contacts contacts = new Contacts();
+        if(contactCache != null){
+            return new Contacts(contactCache);
+        }
+        contactCache = new Contacts();
         List<WebElement> elements = browser.findElements(By.xpath("//tr[@name='entry']"));
         for (WebElement element : elements) {
             int id = Integer.parseInt(element.findElement(By.xpath("td[1]/input")).getAttribute("value"));
@@ -137,10 +138,10 @@ public class ContactHelper extends HelperBase {
 
             ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName)
                     .withFirstAddress(address).withMainEmail(mainEmail);
-            contacts.add(contact);
+            contactCache.add(contact);
         }
 
-        return contacts;
+        return new Contacts(contactCache);
     }
 
     /*
@@ -150,31 +151,41 @@ public class ContactHelper extends HelperBase {
         initContactCreation();
         fillContactForm(contact);
         submitContactCreation();
-        returnToHomePage();
+        contactCache = null;
+        returnToHomePageByGet();
     }
 
     public void delete(int index) {
         selectContact(index);
-        editSelectedContact();
+        editSelectedContact(index);
         removeContact();
+        contactCache = null;
+        returnToHomePageByGet();
     }
 
     public void modify(ContactData contact) {
         selectContactById(contact.getId());
-        editSelectedContact();
+        editSelectedContact(contact.getId());
         fillContactForm(contact);
         submitContactModification();
-        returnToHomePage();
+        contactCache = null;
+        returnToHomePageByGet();
 
     }
 
     public void delete(ContactData contact) {
         selectContactById(contact.getId());
-        editSelectedContact();
+        editSelectedContact(contact.getId());
         removeContact();
+        contactCache = null;
+        returnToHomePageByGet();
     }
 
     private void selectContactById(int id) {
         browser.findElement(By.xpath("//tr[@name='entry']//input[@id='" + id + "']")).click();
+    }
+
+    private void returnToHomePageByGet(){
+        browser.get("http://addressbook/");
     }
 }

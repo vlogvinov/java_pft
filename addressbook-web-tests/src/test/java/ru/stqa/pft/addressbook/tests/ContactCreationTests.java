@@ -21,6 +21,7 @@ public class ContactCreationTests extends TestBase {
             .withMainEmail("volodymyr.logvinov@gmail.com").withSecondEmail("my_second_email@gmail.com").withThirdEmail("my_thirdemail@gmail.com")
             .withHomePage("myhomepage.com").withSecondAddress("Dmitria Lucenka 13").withSecondHomePhoneNumber("5679867").withNotes("My super notes");
         app.contact().create(contact);
+        assertThat(app.contact().count(), equalTo(before.size() + 1));
         Contacts after = app.contact().all();
         assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
     }
