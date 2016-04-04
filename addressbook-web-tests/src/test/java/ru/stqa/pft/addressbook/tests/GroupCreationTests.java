@@ -19,14 +19,10 @@ public class GroupCreationTests extends TestBase {
     @Test
     public void testGroupCreation() {
         Groups before = app.group().all();
-
         GroupData group = new GroupData().withName("my group").withHeader("my header").withFooter("my footer");
         app.group().create(group);
-
         Groups after = app.group().all();
-
         assertThat(after, equalTo(before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
-
     }
 
 }
