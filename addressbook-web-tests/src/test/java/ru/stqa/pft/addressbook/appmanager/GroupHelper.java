@@ -12,6 +12,8 @@ import java.util.Set;
 
 public class GroupHelper extends HelperBase {
 
+    private Groups groupCache = null;
+
     public GroupHelper(WebDriver browser) {
         super(browser);
     }
@@ -24,6 +26,7 @@ public class GroupHelper extends HelperBase {
         initGroupCreation();
         fillGroupForm(group);
         submitGroupCreation();
+        groupCache = null;
         returnToGroupsPage();
     }
 
@@ -32,12 +35,14 @@ public class GroupHelper extends HelperBase {
         initGroupModification();
         fillGroupForm(group);
         submitGroupModification();
+        groupCache = null;
         returnToGroupsPage();
     }
 
     public void remove(GroupData group) {
         selectGroupById(group.getId());
         deleteSelectedGroups();
+        groupCache = null;
         returnToGroupsPage();
     }
 
@@ -84,22 +89,25 @@ public class GroupHelper extends HelperBase {
     */
 
     public Groups all() {
-        Groups groups = new Groups();
+        if(groupCache != null){
+            return new Groups(groupCache);
+        }
+        groupCache = new Groups();
         List<WebElement> elements = browser.findElements(By.xpath("//span[@class='group']"));
         for (WebElement element : elements) {
             String name = element.getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             GroupData group = new GroupData().withName(name).withId(id);
-            groups.add(group);
+            groupCache.add(group);
         }
-        return groups;
+        return new Groups(groupCache);
     }
 
     public boolean isThereAGroup() {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public int getGroupCount() {
+    public int count() {
         return browser.findElements(By.xpath("//input[@type='checkbox']")).size();
     }
 }
