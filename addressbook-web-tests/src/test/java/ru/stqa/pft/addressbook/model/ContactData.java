@@ -139,7 +139,7 @@ public class ContactData {
         return notes;
     }
 
-    public String getAllPhones(String allPhones) {
+    public String getAllPhones() {
         return allPhones;
     }
 
