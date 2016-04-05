@@ -1,5 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
+import java.io.File;
+
 public class ContactData {
     private int id;
     private Boolean creation;
@@ -29,6 +31,7 @@ public class ContactData {
     private String secondHomePhoneNumber;
     private String notes;
     private String allPhones;
+    private File photo;
 
     /*                      GETTERS                                 */
     public int getId() {
@@ -141,6 +144,10 @@ public class ContactData {
 
     public String getAllPhones() {
         return allPhones;
+    }
+
+    public File getPhoto(){
+        return photo;
     }
 
 
@@ -258,6 +265,8 @@ public class ContactData {
     public void setAllPhones(String allPhones) {
         this.allPhones = allPhones;
     }
+
+    public void setPhoto(File photo){this.photo = photo;}
 
 
     /*          FLUENT SETTERS    */
@@ -398,6 +407,11 @@ public class ContactData {
 
     public ContactData withAllPhones(String allPhones) {
         this.allPhones = allPhones;
+        return this;
+    }
+
+    public ContactData withPhoto(File photo){
+        this.photo = photo;
         return this;
     }
 

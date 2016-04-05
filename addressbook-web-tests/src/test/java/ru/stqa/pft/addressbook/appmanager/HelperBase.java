@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
+import java.io.File;
+
 public class HelperBase {
     protected WebDriver browser;
 
@@ -19,6 +21,12 @@ public class HelperBase {
                 clear(locator);
                 send(locator, text);
             }
+        }
+    }
+
+    protected void attach(By locator, File file) {
+        if (file != null) {
+            send(locator, file.getAbsolutePath());
         }
     }
 
