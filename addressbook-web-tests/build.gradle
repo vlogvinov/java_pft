@@ -9,5 +9,4 @@ dependencies {
     compile 'org.seleniumhq.selenium:selenium-java:2.52.0'
     compile 'org.hamcrest:java-hamcrest:2.0.0.0'
     compile 'ru.yandex.qatools.allure:allure-core:1.5.0.RC2'
-    compile 'com.beust:jcommander:1.48'
 }
