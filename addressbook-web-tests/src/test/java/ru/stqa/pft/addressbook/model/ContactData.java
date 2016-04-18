@@ -9,6 +9,7 @@ public class ContactData {
     private String middleName;
     private String lastName;
     private String nickName;
+    private File photo;
     private String title;
     private String company;
     private String firstAddress;
@@ -31,7 +32,6 @@ public class ContactData {
     private String secondHomePhoneNumber;
     private String notes;
     private String allPhones;
-    private File photo;
 
     /*                      GETTERS                                 */
     public int getId() {
@@ -57,6 +57,11 @@ public class ContactData {
     public String getNickName() {
         return nickName;
     }
+
+    public File getPhoto(){
+        return photo;
+    }
+
 
     public String getTitle() {
         return title;
@@ -146,11 +151,6 @@ public class ContactData {
         return allPhones;
     }
 
-    public File getPhoto(){
-        return photo;
-    }
-
-
 
     /*          SETTERS                  */
 
@@ -177,6 +177,8 @@ public class ContactData {
     public void setNickName(String nickName) {
         this.nickName = nickName;
     }
+
+    public void setPhoto(File photo){this.photo = photo;}
 
     public void setTitle(String title) {
         this.title = title;
@@ -266,8 +268,6 @@ public class ContactData {
         this.allPhones = allPhones;
     }
 
-    public void setPhoto(File photo){this.photo = photo;}
-
 
     /*          FLUENT SETTERS    */
 
@@ -298,6 +298,11 @@ public class ContactData {
 
     public ContactData withNickName(String nickName){
         this.nickName = nickName;
+        return this;
+    }
+
+    public ContactData withPhoto(File photo){
+        this.photo = photo;
         return this;
     }
 
@@ -407,11 +412,6 @@ public class ContactData {
 
     public ContactData withAllPhones(String allPhones) {
         this.allPhones = allPhones;
-        return this;
-    }
-
-    public ContactData withPhoto(File photo){
-        this.photo = photo;
         return this;
     }
 

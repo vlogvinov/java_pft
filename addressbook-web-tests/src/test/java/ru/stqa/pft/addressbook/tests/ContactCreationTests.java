@@ -18,11 +18,11 @@ public class ContactCreationTests extends TestBase {
 
         File photo = new File("src/test/resources/checkout.png");
         ContactData contact = new ContactData().withId(Integer.MAX_VALUE).withCreation(true).withFirstName("Vladimir")
-            .withMiddleName("Vitalievich").withLastName("Logvinov").withNickName("vlogvinov").withTitle("Mr")
+            .withMiddleName("Vitalievich").withLastName("Logvinov").withNickName("vlogvinov").withPhoto(photo).withTitle("Mr")
             .withCompany("P4").withFirstAddress("Zakrevskogo street 67").withPhoneNumber("5469878")
             .withMobilePhoneNumber("0639876756").withWorkPhoneNumber("0994565678").withFax("Fax")
             .withMainEmail("volodymyr.logvinov@gmail.com").withSecondEmail("my_second_email@gmail.com").withThirdEmail("my_thirdemail@gmail.com")
-            .withHomePage("myhomepage.com").withSecondAddress("Dmitria Lucenka 13").withSecondHomePhoneNumber("5679867").withNotes("My super notes").withPhoto(photo);
+            .withHomePage("myhomepage.com").withSecondAddress("Dmitria Lucenka 13").withSecondHomePhoneNumber("5679867").withNotes("My super notes");
         app.contact().create(contact);
         assertThat(app.contact().count(), equalTo(before.size() + 1));
         Contacts after = app.contact().all();
