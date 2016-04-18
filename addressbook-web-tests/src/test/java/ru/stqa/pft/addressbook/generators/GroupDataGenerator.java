@@ -18,7 +18,7 @@ public class GroupDataGenerator {
 
     @Parameter(names = "-f", description = "Target file")
     public String file;
-    
+
 
     public static void main(String[] args) throws IOException {
         GroupDataGenerator generator = new GroupDataGenerator();
@@ -31,13 +31,11 @@ public class GroupDataGenerator {
         }
         generator.run();
     }
+
     private void run() throws IOException {
         List<GroupData> groups = generateGroups(count);
         save(groups, new File(file));
     }
-
-    List<GroupData> groups = generateGroups(count);
-
 
     private void save(List<GroupData> groups, File file) throws IOException {
         Writer writer = new FileWriter(file);
@@ -49,7 +47,7 @@ public class GroupDataGenerator {
 
 
     private static List<GroupData> generateGroups(int count) {
-        List<GroupData> groups = new ArrayList<GroupData>();
+        List<GroupData> groups = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             groups.add(new GroupData()
                     .withName(String.format("test %s", i))
