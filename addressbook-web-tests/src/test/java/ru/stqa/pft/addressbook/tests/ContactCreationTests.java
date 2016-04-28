@@ -1,28 +1,56 @@
 package ru.stqa.pft.addressbook.tests;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.thoughtworks.xstream.XStream;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.io.File;
+import java.io.*;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
 public class ContactCreationTests extends TestBase {
 
-    @Test
-    public void ContactCreationTests() {
-       Contacts before = app.contact().all();
+    @DataProvider
+    public Iterator<Object[]> validContactsFromXml() throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")));
+        String xml = "";
+        String line = reader.readLine();
+        while (line != null){
+            xml += line;
+            line = reader.readLine();
+        }
+        XStream xStream = new XStream();
+        xStream.processAnnotations(ContactData.class);
+        List<ContactData> contacts = (List<ContactData>) xStream.fromXML(xml);
+       return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
+    }
 
-        File photo = new File("src/test/resources/checkout.png");
-        ContactData contact = new ContactData().withId(Integer.MAX_VALUE).withCreation(true).withFirstName("Vladimir")
-            .withMiddleName("Vitalievich").withLastName("Logvinov").withNickName("vlogvinov").withPhoto(photo).withTitle("Mr")
-            .withCompany("P4").withFirstAddress("Zakrevskogo street 67").withPhoneNumber("5469878")
-            .withMobilePhoneNumber("0639876756").withWorkPhoneNumber("0994565678").withFax("Fax")
-            .withMainEmail("volodymyr.logvinov@gmail.com").withSecondEmail("my_second_email@gmail.com").withThirdEmail("my_thirdemail@gmail.com")
-            .withHomePage("myhomepage.com").withSecondAddress("Dmitria Lucenka 13").withSecondHomePhoneNumber("5679867").withNotes("My super notes");
+    @DataProvider
+    public Iterator<Object[]> validContactsFromJson() throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")));
+        String json = "";
+        String line = reader.readLine();
+        while (line != null){
+            json += line;
+            line = reader.readLine();
+        }
+        Gson gson = new Gson();
+        List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType()); // List<ContactData>.class
+        return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
+    }
+
+    @Test(dataProvider = "validContactsFromJson")
+    public void ContactCreationTests(ContactData contact) {
+       Contacts before = app.contact().all();
         app.contact().create(contact);
         assertThat(app.contact().count(), equalTo(before.size() + 1));
         Contacts after = app.contact().all();
