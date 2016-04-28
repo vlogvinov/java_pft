@@ -17,10 +17,8 @@ public class ContactDataGenerator {
     public static void main(String[] args) throws IOException {
         int count = Integer.parseInt(args[0]);
         File file = new File(args[1]);
-
         List<ContactData> contacts = generateContacts(count);
         saveAsJson(contacts, file);
-
     }
 
     private static List<ContactData> generateContacts(int count) {
@@ -54,7 +52,6 @@ public class ContactDataGenerator {
 
         }
         return contacts;
-
     }
     public static void saveAsXml(List<ContactData> contacts, File file) throws IOException {
         XStream xstream = new XStream();
