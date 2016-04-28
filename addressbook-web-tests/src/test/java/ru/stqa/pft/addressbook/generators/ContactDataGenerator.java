@@ -23,12 +23,15 @@ public class ContactDataGenerator {
     @Parameter(names = "-f", description = "Target file")
     public String file;
 
+    @Parameter(names = "-d", description = "Data format")
+    public String format;
+
     public static void main(String[] args) throws IOException {
         ContactDataGenerator contactDataGenerator = new ContactDataGenerator();
         JCommander jCommander = new JCommander(contactDataGenerator);
         try {
             jCommander.parse(args);
-        }catch (ParameterException ex){
+        } catch (ParameterException ex) {
             jCommander.usage();
             return;
         }
@@ -37,12 +40,18 @@ public class ContactDataGenerator {
 
     private void run() throws IOException {
         List<ContactData> contacts = generateContacts(count);
-        saveAsJson(contacts, new File(file));
+        if (format.equals("xml")) {
+            saveAsXml(contacts, new File(file));
+        } else if (format.equals("json")) {
+            saveAsJson(contacts, new File(file));
+        } else {
+            System.out.println("Unrecognized format " + format);
+        }
     }
 
     private List<ContactData> generateContacts(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
-        for (int i = 0; i < count; i++){
+        for (int i = 0; i < count; i++) {
             contacts.add(new ContactData()
                     .withFirstName(String.format("firstname %s", i))
                     .withMiddleName(String.format("middlename %s", i))
@@ -72,6 +81,7 @@ public class ContactDataGenerator {
         }
         return contacts;
     }
+
     public void saveAsXml(List<ContactData> contacts, File file) throws IOException {
         XStream xstream = new XStream();
         xstream.processAnnotations(ContactData.class);
