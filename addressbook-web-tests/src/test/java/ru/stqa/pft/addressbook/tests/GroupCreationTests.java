@@ -9,7 +9,6 @@ import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.reporters.Buffer;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
@@ -17,8 +16,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.WeakHashMap;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 
@@ -90,5 +87,4 @@ public class GroupCreationTests extends TestBase {
         Groups after = app.group().all();
         assertThat(after, equalTo(before));
     }
-
 }
