@@ -1,0 +1,242 @@
+<list>
+  <contact>
+    <firstName>firstname 0</firstName>
+    <middleName>middlename 0</middleName>
+    <lastName>lastname 0</lastName>
+    <nickName>nickname 0</nickName>
+    <title>title 0</title>
+    <company>company 0</company>
+    <firstAddress>firstaddress 0</firstAddress>
+    <homePhoneNumber>0636773421 0</homePhoneNumber>
+    <mobilePhoneNumber>04454543232 0</mobilePhoneNumber>
+    <workPhoneNumber>097463232 0</workPhoneNumber>
+    <fax> 0</fax>
+    <mainEmail>email0@gmail.com</mainEmail>
+    <secondEmail>secondEmail0@gmail.com</secondEmail>
+    <thirdEmail>thirdEmail0@gmail.com</thirdEmail>
+    <homePage>myhomepage0.com</homePage>
+    <birthDay>2000</birthDay>
+    <anniverDay>22</anniverDay>
+    <anniverMonth>06</anniverMonth>
+    <anniverYear>06</anniverYear>
+    <secondAddress>My second address 0</secondAddress>
+    <secondHomePhoneNumber>0987673420 0</secondHomePhoneNumber>
+    <notes>Some notes 0</notes>
+  </contact>
+  <contact>
+    <firstName>firstname 1</firstName>
+    <middleName>middlename 1</middleName>
+    <lastName>lastname 1</lastName>
+    <nickName>nickname 1</nickName>
+    <title>title 1</title>
+    <company>company 1</company>
+    <firstAddress>firstaddress 1</firstAddress>
+    <homePhoneNumber>0636773421 1</homePhoneNumber>
+    <mobilePhoneNumber>04454543232 1</mobilePhoneNumber>
+    <workPhoneNumber>097463232 1</workPhoneNumber>
+    <fax> 1</fax>
+    <mainEmail>email1@gmail.com</mainEmail>
+    <secondEmail>secondEmail1@gmail.com</secondEmail>
+    <thirdEmail>thirdEmail1@gmail.com</thirdEmail>
+    <homePage>myhomepage1.com</homePage>
+    <birthDay>2000</birthDay>
+    <anniverDay>22</anniverDay>
+    <anniverMonth>06</anniverMonth>
+    <anniverYear>06</anniverYear>
+    <secondAddress>My second address 1</secondAddress>
+    <secondHomePhoneNumber>0987673420 1</secondHomePhoneNumber>
+    <notes>Some notes 1</notes>
+  </contact>
+  <contact>
+    <firstName>firstname 2</firstName>
+    <middleName>middlename 2</middleName>
+    <lastName>lastname 2</lastName>
+    <nickName>nickname 2</nickName>
+    <title>title 2</title>
+    <company>company 2</company>
+    <firstAddress>firstaddress 2</firstAddress>
+    <homePhoneNumber>0636773421 2</homePhoneNumber>
+    <mobilePhoneNumber>04454543232 2</mobilePhoneNumber>
+    <workPhoneNumber>097463232 2</workPhoneNumber>
+    <fax> 2</fax>
+    <mainEmail>email2@gmail.com</mainEmail>
+    <secondEmail>secondEmail2@gmail.com</secondEmail>
+    <thirdEmail>thirdEmail2@gmail.com</thirdEmail>
+    <homePage>myhomepage2.com</homePage>
+    <birthDay>2000</birthDay>
+    <anniverDay>22</anniverDay>
+    <anniverMonth>06</anniverMonth>
+    <anniverYear>06</anniverYear>
+    <secondAddress>My second address 2</secondAddress>
+    <secondHomePhoneNumber>0987673420 2</secondHomePhoneNumber>
+    <notes>Some notes 2</notes>
+  </contact>
+  <contact>
+    <firstName>firstname 3</firstName>
+    <middleName>middlename 3</middleName>
+    <lastName>lastname 3</lastName>
+    <nickName>nickname 3</nickName>
+    <title>title 3</title>
+    <company>company 3</company>
+    <firstAddress>firstaddress 3</firstAddress>
+    <homePhoneNumber>0636773421 3</homePhoneNumber>
+    <mobilePhoneNumber>04454543232 3</mobilePhoneNumber>
+    <workPhoneNumber>097463232 3</workPhoneNumber>
+    <fax> 3</fax>
+    <mainEmail>email3@gmail.com</mainEmail>
+    <secondEmail>secondEmail3@gmail.com</secondEmail>
+    <thirdEmail>thirdEmail3@gmail.com</thirdEmail>
+    <homePage>myhomepage3.com</homePage>
+    <birthDay>2000</birthDay>
+    <anniverDay>22</anniverDay>
+    <anniverMonth>06</anniverMonth>
+    <anniverYear>06</anniverYear>
+    <secondAddress>My second address 3</secondAddress>
+    <secondHomePhoneNumber>0987673420 3</secondHomePhoneNumber>
+    <notes>Some notes 3</notes>
+  </contact>
+  <contact>
+    <firstName>firstname 4</firstName>
+    <middleName>middlename 4</middleName>
+    <lastName>lastname 4</lastName>
+    <nickName>nickname 4</nickName>
+    <title>title 4</title>
+    <company>company 4</company>
+    <firstAddress>firstaddress 4</firstAddress>
+    <homePhoneNumber>0636773421 4</homePhoneNumber>
+    <mobilePhoneNumber>04454543232 4</mobilePhoneNumber>
+    <workPhoneNumber>097463232 4</workPhoneNumber>
+    <fax> 4</fax>
+    <mainEmail>email4@gmail.com</mainEmail>
+    <secondEmail>secondEmail4@gmail.com</secondEmail>
+    <thirdEmail>thirdEmail4@gmail.com</thirdEmail>
+    <homePage>myhomepage4.com</homePage>
+    <birthDay>2000</birthDay>
+    <anniverDay>22</anniverDay>
+    <anniverMonth>06</anniverMonth>
+    <anniverYear>06</anniverYear>
+    <secondAddress>My second address 4</secondAddress>
+    <secondHomePhoneNumber>0987673420 4</secondHomePhoneNumber>
+    <notes>Some notes 4</notes>
+  </contact>
+  <contact>
+    <firstName>firstname 5</firstName>
+    <middleName>middlename 5</middleName>
+    <lastName>lastname 5</lastName>
+    <nickName>nickname 5</nickName>
+    <title>title 5</title>
+    <company>company 5</company>
+    <firstAddress>firstaddress 5</firstAddress>
+    <homePhoneNumber>0636773421 5</homePhoneNumber>
+    <mobilePhoneNumber>04454543232 5</mobilePhoneNumber>
+    <workPhoneNumber>097463232 5</workPhoneNumber>
+    <fax> 5</fax>
+    <mainEmail>email5@gmail.com</mainEmail>
+    <secondEmail>secondEmail5@gmail.com</secondEmail>
+    <thirdEmail>thirdEmail5@gmail.com</thirdEmail>
+    <homePage>myhomepage5.com</homePage>
+    <birthDay>2000</birthDay>
+    <anniverDay>22</anniverDay>
+    <anniverMonth>06</anniverMonth>
+    <anniverYear>06</anniverYear>
+    <secondAddress>My second address 5</secondAddress>
+    <secondHomePhoneNumber>0987673420 5</secondHomePhoneNumber>
+    <notes>Some notes 5</notes>
+  </contact>
+  <contact>
+    <firstName>firstname 6</firstName>
+    <middleName>middlename 6</middleName>
+    <lastName>lastname 6</lastName>
+    <nickName>nickname 6</nickName>
+    <title>title 6</title>
+    <company>company 6</company>
+    <firstAddress>firstaddress 6</firstAddress>
+    <homePhoneNumber>0636773421 6</homePhoneNumber>
+    <mobilePhoneNumber>04454543232 6</mobilePhoneNumber>
+    <workPhoneNumber>097463232 6</workPhoneNumber>
+    <fax> 6</fax>
+    <mainEmail>email6@gmail.com</mainEmail>
+    <secondEmail>secondEmail6@gmail.com</secondEmail>
+    <thirdEmail>thirdEmail6@gmail.com</thirdEmail>
+    <homePage>myhomepage6.com</homePage>
+    <birthDay>2000</birthDay>
+    <anniverDay>22</anniverDay>
+    <anniverMonth>06</anniverMonth>
+    <anniverYear>06</anniverYear>
+    <secondAddress>My second address 6</secondAddress>
+    <secondHomePhoneNumber>0987673420 6</secondHomePhoneNumber>
+    <notes>Some notes 6</notes>
+  </contact>
+  <contact>
+    <firstName>firstname 7</firstName>
+    <middleName>middlename 7</middleName>
+    <lastName>lastname 7</lastName>
+    <nickName>nickname 7</nickName>
+    <title>title 7</title>
+    <company>company 7</company>
+    <firstAddress>firstaddress 7</firstAddress>
+    <homePhoneNumber>0636773421 7</homePhoneNumber>
+    <mobilePhoneNumber>04454543232 7</mobilePhoneNumber>
+    <workPhoneNumber>097463232 7</workPhoneNumber>
+    <fax> 7</fax>
+    <mainEmail>email7@gmail.com</mainEmail>
+    <secondEmail>secondEmail7@gmail.com</secondEmail>
+    <thirdEmail>thirdEmail7@gmail.com</thirdEmail>
+    <homePage>myhomepage7.com</homePage>
+    <birthDay>2000</birthDay>
+    <anniverDay>22</anniverDay>
+    <anniverMonth>06</anniverMonth>
+    <anniverYear>06</anniverYear>
+    <secondAddress>My second address 7</secondAddress>
+    <secondHomePhoneNumber>0987673420 7</secondHomePhoneNumber>
+    <notes>Some notes 7</notes>
+  </contact>
+  <contact>
+    <firstName>firstname 8</firstName>
+    <middleName>middlename 8</middleName>
+    <lastName>lastname 8</lastName>
+    <nickName>nickname 8</nickName>
+    <title>title 8</title>
+    <company>company 8</company>
+    <firstAddress>firstaddress 8</firstAddress>
+    <homePhoneNumber>0636773421 8</homePhoneNumber>
+    <mobilePhoneNumber>04454543232 8</mobilePhoneNumber>
+    <workPhoneNumber>097463232 8</workPhoneNumber>
+    <fax> 8</fax>
+    <mainEmail>email8@gmail.com</mainEmail>
+    <secondEmail>secondEmail8@gmail.com</secondEmail>
+    <thirdEmail>thirdEmail8@gmail.com</thirdEmail>
+    <homePage>myhomepage8.com</homePage>
+    <birthDay>2000</birthDay>
+    <anniverDay>22</anniverDay>
+    <anniverMonth>06</anniverMonth>
+    <anniverYear>06</anniverYear>
+    <secondAddress>My second address 8</secondAddress>
+    <secondHomePhoneNumber>0987673420 8</secondHomePhoneNumber>
+    <notes>Some notes 8</notes>
+  </contact>
+  <contact>
+    <firstName>firstname 9</firstName>
+    <middleName>middlename 9</middleName>
+    <lastName>lastname 9</lastName>
+    <nickName>nickname 9</nickName>
+    <title>title 9</title>
+    <company>company 9</company>
+    <firstAddress>firstaddress 9</firstAddress>
+    <homePhoneNumber>0636773421 9</homePhoneNumber>
+    <mobilePhoneNumber>04454543232 9</mobilePhoneNumber>
+    <workPhoneNumber>097463232 9</workPhoneNumber>
+    <fax> 9</fax>
+    <mainEmail>email9@gmail.com</mainEmail>
+    <secondEmail>secondEmail9@gmail.com</secondEmail>
+    <thirdEmail>thirdEmail9@gmail.com</thirdEmail>
+    <homePage>myhomepage9.com</homePage>
+    <birthDay>2000</birthDay>
+    <anniverDay>22</anniverDay>
+    <anniverMonth>06</anniverMonth>
+    <anniverYear>06</anniverYear>
+    <secondAddress>My second address 9</secondAddress>
+    <secondHomePhoneNumber>0987673420 9</secondHomePhoneNumber>
+    <notes>Some notes 9</notes>
+  </contact>
+</list>
