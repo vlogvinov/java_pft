@@ -1,5 +1,8 @@
 package ru.stqa.pft.addressbook.generators;
 
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.Parameter;
+import com.beust.jcommander.ParameterException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
@@ -14,14 +17,30 @@ import java.util.List;
 
 public class ContactDataGenerator {
 
+    @Parameter(names = "-c", description = "Group count")
+    public int count;
+
+    @Parameter(names = "-f", description = "Target file")
+    public String file;
+
     public static void main(String[] args) throws IOException {
-        int count = Integer.parseInt(args[0]);
-        File file = new File(args[1]);
-        List<ContactData> contacts = generateContacts(count);
-        saveAsJson(contacts, file);
+        ContactDataGenerator contactDataGenerator = new ContactDataGenerator();
+        JCommander jCommander = new JCommander(contactDataGenerator);
+        try {
+            jCommander.parse(args);
+        }catch (ParameterException ex){
+            jCommander.usage();
+            return;
+        }
+        contactDataGenerator.run();
     }
 
-    private static List<ContactData> generateContacts(int count) {
+    private void run() throws IOException {
+        List<ContactData> contacts = generateContacts(count);
+        saveAsJson(contacts, new File(file));
+    }
+
+    private List<ContactData> generateContacts(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
         for (int i = 0; i < count; i++){
             contacts.add(new ContactData()
@@ -53,7 +72,7 @@ public class ContactDataGenerator {
         }
         return contacts;
     }
-    public static void saveAsXml(List<ContactData> contacts, File file) throws IOException {
+    public void saveAsXml(List<ContactData> contacts, File file) throws IOException {
         XStream xstream = new XStream();
         xstream.processAnnotations(ContactData.class);
         String xml = xstream.toXML(contacts);
@@ -62,7 +81,7 @@ public class ContactDataGenerator {
         }
     }
 
-    public static void saveAsJson(List<ContactData> contacts, File file) throws IOException {
+    public void saveAsJson(List<ContactData> contacts, File file) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(contacts);
         try (Writer writer = new FileWriter(file)) {
