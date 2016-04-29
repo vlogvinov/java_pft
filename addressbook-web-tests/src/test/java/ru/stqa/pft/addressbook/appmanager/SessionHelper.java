@@ -9,10 +9,6 @@ public class SessionHelper extends HelperBase {
         super(browser);
     }
 
-    public void openHomePage() {
-        browser.get("http://addressbook/");
-    }
-
     public void login(String username, String password) {
         type(By.name("user"), username);
         type(By.name("pass"), password);
