@@ -23,14 +23,14 @@ public class ApplicationManager {
     private SessionHelper sessionHelper;
     private ContactHelper contactHelper;
 
-    public ApplicationManager(String browser) {
+    public ApplicationManager(String browser){
         this.browser = browser;
         properties = new Properties();
     }
 
     public void init() throws IOException {
         String target = System.getProperty("target", "local");
-       // properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
         if (browser.equals(BrowserType.FIREFOX)) {
             driver = new FirefoxDriver();
         } else if (browser.equals(BrowserType.CHROME)) {
@@ -44,8 +44,8 @@ public class ApplicationManager {
         navigationHelper = new NavigationHelper(driver);
         sessionHelper = new SessionHelper(driver);
         contactHelper = new ContactHelper(driver);
-        sessionHelper.openHomePage();
-        sessionHelper.login("admin", "secret");
+        driver.get(properties.getProperty("web.baseUrl"));
+        sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
     }
 
     public void stop() {
